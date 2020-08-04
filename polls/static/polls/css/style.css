@@ -421,7 +421,6 @@ body {
 }
 .header__logo {
     background-size: cover;
-    background-position: center center;
     width: 50px;
 }
 
@@ -1038,7 +1037,7 @@ label[for="id_address"] {
 }
 
 .product-order__checkout {
-
+    background-image: url(/media/images/logo.png)
 }
 
 .product-best__basket-link {
