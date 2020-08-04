@@ -16,7 +16,7 @@ src="https://www.paypal.com/sdk/js?client-id=ARlEijxgWmZPoqtbsrbvd7_TjkCDv3UGZIm
 {% block products %}
 
 <div class="payment-wrapper">
-    <div class="payment-wrapper__success" style="background-image: url({% static 'polls/images/success.png' %})"></div>
+    <div class="payment-wrapper__success" style="background-image: url({% media 'images/success.png' %})"></div>
     <h1 class="payment-wrapper__title">Платеж успешно обработан</h1>
     <p>Информация о платеже отправлена на почту</p>
     <a href ="{% url 'polls:home'%}" class="payment-wrapper__home-link">
