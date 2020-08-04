@@ -1,1 +1,2 @@
-web: gunicorn shop.wsgi
+web: gunicorn magazin_dns.wsgi
+
