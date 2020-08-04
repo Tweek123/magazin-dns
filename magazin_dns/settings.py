@@ -75,24 +75,38 @@ TEMPLATES = [
 WSGI_APPLICATION = 'magazin_dns.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#         'default': {
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nhcumwoq',
+        'USER': 'nhcumwoq',
+        'PASSWORD': 'UG6rbS_HN0T046xkPk6LhlfyQ4FxMqi_',
+        'HOST': 'balarama.db.elephantsql.com',
+        'PORT':  '5432'
+    }
+}
+
+# DATABASE = {
+#     'default': {
 #         'ENGINE': 'djongo',
-#         'NAME': 'test',
-#         'HOST': 'mongodb+srv://tweek:tweek@cluster0-nrehl.mongodb.net/test?retryWrites=true&w=majority',
-#         'USER': 'tweek',
-#         'PASSWORD': 'tweek',
+#         "CLIENT": {
+#            "name": "shop",
+#            "host": "mongodb+srv://tweek:tweek@cluster0.nrehl.gcp.mongodb.net/shop?retryWrites=true&w=majority",
+#            "username": "tweek",
+#            "password": "tweek"
+#         }, 
 #     }
 # }
-DATABASES = {
-            'default': {
-                    'ENGINE': 'djongo',
-                    'NAME': 'your-db-name',
-            }
-    }
+# DATABASES = {
+#             'default': {
+#                     'ENGINE': 'djongo',
+#                     'NAME': 'your-db-name',
+#             }
+#     }
 
 
 # Password validation

@@ -13,6 +13,7 @@ class CharactInline(admin.StackedInline):
     extra = 1
 
 class CharactAdmin(admin.ModelAdmin):
+    model = Charact
     fieldsets = [
         (None,               {'fields': ['charact_title']}),
         (None,               {'fields': ['charact_text']}),
