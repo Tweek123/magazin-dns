@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <a href ="{% url 'polls:home'%}" class="header__logo" style="background: url('/media/images/logo.png') no-repeat center center; background-size: cover;">
     </a>
-    <img src="/static/polls/images/logo.png" alt="" class="product-best__image">
+    <img src="/static/logo.png" alt="" class="product-best__image">
     <form class="header__search-wrapper" action="{% url 'polls:search'%}" method="GET">                 
         {% csrf_token %}
         <input class = "header__search" type="text" name="search" value="{{searchVal}}">
