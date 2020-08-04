@@ -14,7 +14,9 @@ import os
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -28,7 +30,6 @@ SECRET_KEY = '(1nj)l@ij7^kh2laon!bx(g!jzt=hbe_6mx2**dz-1l(bw(8)l'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 PAYPAL_RECEIVER_EMAIL = 'tweek1996@gmail.com'
 PAYPAL_TEST = True
@@ -146,4 +147,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
