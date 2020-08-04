@@ -22,7 +22,7 @@
 
 <header class="header">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <a href ="{% url 'polls:home'%}" class="header__logo" style="background-image: url({% static 'polls/images/logo.png' %})">
+    <a href ="{% url 'polls:home'%}" class="header__logo" style="background-image: url('{% static 'polls/images/logo.png' %}')">
     </a>
     <form class="header__search-wrapper" action="{% url 'polls:search'%}" method="GET">                 
         {% csrf_token %}
