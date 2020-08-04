@@ -27,7 +27,8 @@ SECRET_KEY = '(1nj)l@ij7^kh2laon!bx(g!jzt=hbe_6mx2**dz-1l(bw(8)l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
 
 PAYPAL_RECEIVER_EMAIL = 'tweek1996@gmail.com'
 PAYPAL_TEST = True
