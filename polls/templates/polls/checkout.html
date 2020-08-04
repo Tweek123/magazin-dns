@@ -1,0 +1,144 @@
+{% extends './base.html' %}
+{% load static%}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+<script src="{% static 'polls/js/checkout.js' %}"></script>
+<script src="https://use.fontawesome.com/3fa7a2df95.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+
+{% endblock %}
+
+
+
+{% block products %}
+
+<form class="checkout-form" name="checkout" method="POST">
+        {% csrf_token %}
+        {{ form.email.label }}
+        {{ form.email }}
+        <div class="checkout-form__input-errors">
+            {% for error in form.email.errors %}
+                <p class="checkout-form__input-error">{{error}}</p>
+            {% endfor%}
+        </div>
+
+        {{ form.firstName.label }}
+        {{ form.firstName }}
+
+        {{ form.lastName.label }}
+        {{ form.lastName }}
+
+        {{ form.phone.label }}
+        {{ form.phone }}
+        <div class="checkout-form__input-errors">
+            {% for error in form.phone.errors %}
+                <p class="checkout-form__input-error">{{error}}</p>
+            {% endfor%}
+        </div>
+
+       
+
+        <div id="id_deliveryType" class="checkout-form__radio-buttons-wrapper">
+        {% for delivery in form.deliveryType %}
+            {% if forloop.counter == 1 %}
+                {{delivery}}
+                <div class="checkout-form__input-wrapper">
+                    {{form.address.label}}
+                    {{form.address}}
+                </div>
+            {% elif forloop.counter == 2 %}
+                {{delivery}}
+                <div class="checkout-form__input-wrapper" style="display: none;">
+                    {{form.delivery}}
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+
+
+    <div class="checkout-orders__show-wrapper">
+        <i class="checkout-orders__show fa fa-caret-down fa-2x" aria-hidden="true"></i>
+        <p>Показать покупки</p>
+    </div>
+    <div class="checkout-orders not-show">
+
+        {% for order in orders %}
+        <div class="product-order__wrapper">
+            <div class="product background-contour">
+                <div class="product__image-wrappep">
+                    <img src="/media/{{order.product.product_image}}" alt="" class="product__image">
+                </div>
+                <div class="product__text">
+                    <a href="{% url 'polls:product' order.product.id  %}">
+                        <h2 class="product__text-title">
+                            {{order.product.product_title}}
+                        </h2>
+                    </a>
+                    <p class="product__text-description">
+                        {{order.product.product_descr_short}}
+                    </p>
+                </div>
+                <div class="product__price">
+                    <div class="product__price-text-wrapper">
+                        <b class="product__price-text">
+                            {{order.price}}
+                        </b>
+                        <i class="product__price-icon fa fa-rub" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="product-order__func background-contour el-center">
+                <div class="product-order__func-count-value">
+                    {{order.count}}
+                 </div> 
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="checkout-form__total-value-wrapper">
+            <h2 class="checkout-form___total-text">
+                Итог
+            </h2>
+            <div class="checkout-form___total-value-wrapper">
+                <b class="checkout-form__total-value">
+                    {{total}}
+                </b>
+                <i class="checkout-form__price-icon fa fa-rub" aria-hidden="true"></i>
+            </div>
+    </div>
+    <!-- <div id="id_paymentType" class="checkout-form__radio-buttons-wrapper">
+        {% for payment in form.paymentType %}
+            {% if forloop.counter == 1 %}
+                {{payment}}
+                <div class="checkout-form__input-wrapper">
+                    <input type="hidden" name="cmd" value="_xclick" id="id_cmd">
+                    <input type="hidden" name="charset" value="utf-8" id="id_charset">
+                    <input type="hidden" name="currency_code" value="RUB" id="id_currency_code">
+                    <input type="hidden" name="no_shipping" value="1" id="id_no_shipping">
+                    <input type="hidden" name="business" value="tweek1996@gmail.com" id="id_business">
+                    <input type="hidden" name="amount" value={{total}} id="id_amount">
+                    <input type="hidden" name="item_name" value="name of the item" id="id_item_name">
+                    <input type="hidden" name="invoice" value="1" id="id_invoice">
+                    <input type="hidden" name="notify_url" value="http://127.0.0.1:8000/paypal/" id="id_notify_url">
+                    <input type="hidden" name="return" value="https://127.0.0.1:8000/" id="id_return">
+                    <input type="hidden" name="cancel_return" value="https://127.0.0.1:8000/" id="id_cancel_return">
+                    <button type="submit" value="PayPal" border="0" name="PayPal" alt="Buy it Now">
+                </div>
+            {% elif forloop.counter == 2 %}
+                {{payment}}
+                <div class="checkout-form__input-wrapper" style="display: none;">
+                    <div id="card-element"></div>
+                    <button id="card-button" type="submit" name = "Card" value="Card" data-secret="{{ client_secret }}">
+                      Оплатить картой
+                    </button>
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div> -->
+        <!-- <div id="paypal-button-container"></div> -->
+        <button type="sumbit" class="checkout-form__submit">Потдвердить</button>
+</form>
+{% endblock %}

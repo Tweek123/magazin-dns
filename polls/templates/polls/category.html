@@ -1,0 +1,85 @@
+{% extends './base.html' %}
+{% load static%}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+<script src="{% static 'polls/js/product.js' %}"></script>
+<script src="https://use.fontawesome.com/3fa7a2df95.js"></script>
+{% endblock %}
+
+{% block products %}
+<div class="products">
+    {% for product in products %}
+        <div class="product">
+            <div class="product__image-wrappep">
+                <img src="/media/{{product.product_image}}" alt="" class="product__image">
+            </div>
+            <div class="product__text">
+                <a href="{% url 'polls:product' product.id  %}" >
+                    <h2 class="product__text-title">
+                        {{product.product_title}}
+                    </h2>
+                </a>
+                <p class="product__text-description">
+                    {{product.product_descr_short}}
+                </p>
+            </div>
+            <div class="product__price">
+                    <div class="product__price-text-wrapper">
+                        <b class="product__price-text">
+                            {{product.product_price}}
+                        </b>
+                        <i class="product__price-icon fa fa-rub" aria-hidden="true"></i>
+                    </div>
+                    <a href="/polls/order/" class="product__basket-link" id="basket-link">Корзина</a>
+                    <div id="{{product.id}}" class="product__button-buy">Купить</div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="pagination">
+    <span class="step-links">
+        {% if products.has_previous %}
+            <a href="?page=1"><span class="current-el"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span></a>
+            <a href="?page={{ products.previous_page_number }}"><span class="current-el"><i class="fa fa-angle-left" aria-hidden="true"></i></span></a>
+        {% endif %}
+
+        <span class="current">
+            <span class="current-el" >{{ products.number }} ... {{ products.paginator.num_pages }}</span>
+        </span>
+
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}"><span class="current-el" ><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+            <a href="?page={{ products.paginator.num_pages }}"><span class="current-el" ><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a>
+        {% endif %}
+    </span>
+</div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+<!-- <div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}">next</a>
+            <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div> -->

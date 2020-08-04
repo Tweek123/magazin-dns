@@ -1,0 +1,83 @@
+{% extends './base.html' %}
+
+
+{% load static%}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+<script src="{% static 'polls/js/basket.js' %}"></script>
+<script src="https://use.fontawesome.com/3fa7a2df95.js"></script>
+{% endblock %}
+
+{% block order %}
+<div class="order not-show">
+    <div class="products">
+        {% for order in orders %}
+        <div class="product-order__wrapper">
+            <div class="product">
+                <div class="product__image-wrappep">
+                    <img src="/media/{{order.product.product_image}}" alt="" class="product__image">
+                </div>
+                <div class="product__text">
+                    <a href="{% url 'polls:product' order.product.id  %}">
+                        <h2 class="product__text-title">
+                            {{order.product.product_title}}
+                        </h2>
+                    </a>
+                    <p class="product__text-description">
+                        {{order.product.product_descr_short}}
+                    </p>
+                </div>
+                <div class="product__price">
+                        <div class="product__price-text-wrapper">
+                            <b class="product__price-text">
+                                {{order.price}}
+                            </b>
+                            <i class="product__price-icon fa fa-rub" aria-hidden="true"></i>
+                        </div>
+                </div>
+            </div>
+            <div class="product-order__func ">
+                  <div class="product-order__func-count">
+                        <button class="product-order__incr" id="{{order.product.id}}"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        <div class="product-order__func-count-value">
+                            {{order.count}}
+                          </div>  
+                        <button class="product-order__decr" id="{{order.product.id}}"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                  </div>
+                  <div class="product-order__func-delete">
+                        <button class="product-order__del" id="{{order.product.id}}"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
+                  </div> 
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    <div class="product-result">
+        <div class="product-result__total-wrapper">
+            <h3 class="product-result__total-text">
+                Итог
+            </h3>
+            <div class="product-result__total-value-wrapper">
+                <b class="product-result__total-value">
+                    {{total}}
+                </b>
+                <i class="product-best__price-icon fa fa-rub" aria-hidden="true"></i>
+            </div>
+        </div>
+        <a href ="{% url 'polls:checkout'%}">{{ catalog.catalog_name }}
+            <button class="product-order__checkout">
+                <b>Оформить заказ</b>
+            </button>
+        </a>
+    </div>
+</div>
+
+<div class="no-order not-show">
+    <p class="no-order__text">
+        Корзина пуста
+    </p>
+    <a href="/polls/" class="no-order__home-page-link">Вернуться на главную</a>
+</div>
+
+{% endblock %}

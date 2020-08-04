@@ -1,0 +1,71 @@
+{% extends './base.html' %}
+{% load static%}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+<script src="{% static 'polls/js/payment.js' %}"></script>
+<script src="https://use.fontawesome.com/3fa7a2df95.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script
+src="https://www.paypal.com/sdk/js?client-id=ARlEijxgWmZPoqtbsrbvd7_TjkCDv3UGZImPq_nqhUzw5DvEqYsi1niwQ9EkfXhF_0OjTTQwzK6A9BX6"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+</script>{% endblock %}
+
+
+
+{% block products %}
+
+<div class="payment-wrapper" name="checkout" method="POST">
+    <h1 class="payment-wrapper__title">Способы оплаты:</h1>
+    <div id="paypal-button-container"></div>
+    <div class="checkout-orders__show-wrapper">
+        <i class="checkout-orders__show fa fa-caret-down fa-2x" aria-hidden="true"></i>
+        <p>Показать покупки</p>
+    </div>
+    <div class="checkout-orders not-show">
+        {% for order in orders %}
+        <div class="product-order__wrapper">
+            <div class="product background-contour">
+                <div class="product__image-wrappep">
+                    <img src="/media/{{order.product.product_image}}" alt="" class="product__image">
+                </div>
+                <div class="product__text">
+                    <a href="{% url 'polls:product' order.product.id  %}">
+                        <h2 class="product__text-title">
+                            {{order.product.product_title}}
+                        </h2>
+                    </a>
+                    <p class="product__text-description">
+                        {{order.product.product_descr_short}}
+                    </p>
+                </div>
+                <div class="product__price">
+                    <div class="product__price-text-wrapper">
+                        <b id="product__price" class="product__price-text">
+                            {{order.price}}
+                        </b>
+                        <i class="product__price-icon fa fa-rub" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="product-order__func background-contour el-center">
+                <div class="product-order__func-count-value">
+                    {{order.count}}
+                 </div> 
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="checkout-form__total-value-wrapper">
+        <h2 class="checkout-form___total-text">
+            Итог
+        </h2>
+        <div class="checkout-form___total-value-wrapper">
+            <b class="checkout-form__total-value">
+                {{total}}
+            </b>
+            <i class="checkout-form__price-icon fa fa-rub" aria-hidden="true"></i>
+        </div>
+</div>
+</div>
+{% endblock %}

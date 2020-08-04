@@ -1,0 +1,62 @@
+<!-- {% load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+    <ul>
+        {% for product in products %}
+            <img src="/media/{{product.photo}}">
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %} -->
+
+{% load static%}
+<script src="{% static 'polls/js/base.js' %}"></script>
+{% block links %}
+{% endblock %}
+
+<header class="header">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <a href ="{% url 'polls:home'%}" class="header__logo" style="background-image: url({% static 'polls/images/logo.png' %})">
+    </a>
+    <form class="header__search-wrapper" action="{% url 'polls:search'%}" method="GET">                 
+        {% csrf_token %}
+        <input class = "header__search" type="text" name="search" value="{{searchVal}}">
+        <button class="header__search-button" type="submit"><i class="icon fa fa-search" aria-hidden="true"></i></button>    
+    </form>
+    <div class="header__search-icon-wrapper">
+        <a class = "icon" href ="{% url 'polls:order'%}">
+            <i class="fa fa-shopping-basket fa-2x" aria-hidden="true"></i>
+        </a>
+    </div>
+</header>
+<div class="content">
+    <nav class="navigation">
+        <div class="catalog">
+            <div class="catalog__list">
+            {% for catalog in catalogs %}
+                    <div class="catalog__list-item">
+                            <a class="catalog__list-item-link" href ="{% url 'polls:test' catalog.id %}">{{ catalog.catalog_name }}</a>
+                        <div class="catalog__category-list">
+                        {% for category in catalog.category_set.all %}
+                            <div class="catalog__category-list-item">
+                                <a class="catalog__category-list-item-link" href="{% url 'polls:category' category.id %}">{{ category.category_name }}
+                            </a></div>
+                        {% endfor %}
+                        </div>
+                    </div>
+            {% endfor %}
+                </div>
+        </div>
+    </nav>  
+    {% block products %}
+    {% endblock %}
+
+    {% block order %}
+    {% endblock %}
+</div>

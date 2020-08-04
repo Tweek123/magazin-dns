@@ -1,0 +1,59 @@
+{% extends './base.html' %}
+    
+    {% load static%}
+
+    {% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+    <script src="{% static 'polls/js/product.js' %}"></script>
+    <script src="https://use.fontawesome.com/3fa7a2df95.js"></script>
+    {% endblock %}
+
+    {% block products %}
+        <div class="product-wrapper">
+            <div class="product-block">
+                <div class="product-block__image-wrappep">
+                    <img src="/media/{{product.product_image}}" alt="" class="product-block__image">
+                </div>
+                <div class="product-block__text">
+                    <h2 class="product__text-title">
+                        {{product.product_title}}
+                    </h2>
+                    <p class="product-block__text-description">
+                        {{product.product_descr_short}}
+                    </p>
+                </div>
+                <div class="product-block__price">
+                    <div class="product-block__price-text-wrapper">
+                        <b class="product-block__price-text">
+                            {{product.product_price}}
+                        </b>
+                        <i class="product-block__price-icon fa fa-rub" aria-hidden="true"></i>
+                    </div>
+                        <a href="/polls/order/" class="product-block__basket-link">Корзина</a>
+                        <button id="{{product.id}}"  class="product-block__button-buy" type='submit'>Купить</button>
+                </div>
+
+            </div>
+            <div class="product-info-wrapper">
+                <div class="product-description">
+                    <div class="product-description__title"><h1>Описание {{product.product_title}}</h1></div>
+                    <div class="product-description__text"><p>{{product.product_descr_full}}</p></div>
+                </div>
+                <div class="product-characts">
+                    <h1>Основные характеристики</h1>
+                    {%for charact in characts %}
+                        <div class="product-charact__title"><h2>{{charact.charact_title}}</h2></div>
+                        <div class="product-charact__properties-wrapper">
+                            {%for property in charact.properties%}
+                                <div class="product-charact__property-wrapper">
+                                    <div class="product-charact__product-charact-property-title-wrapper"><h3 class="product-charact__product-charact-property-title">{{property.property_title}}</h3></div>
+                                    <div class="product-charact__product-charact-property-text-wrapper"><p class="product-charact__product-charact-property-text">{{property.property_text}}</p></div>
+                                </div>
+                            {%endfor%}
+                        </div>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</div>

@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+{% load static%}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+<script src="{% static 'polls/js/payment.js' %}"></script>
+<script src="https://use.fontawesome.com/3fa7a2df95.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script
+src="https://www.paypal.com/sdk/js?client-id=ARlEijxgWmZPoqtbsrbvd7_TjkCDv3UGZImPq_nqhUzw5DvEqYsi1niwQ9EkfXhF_0OjTTQwzK6A9BX6"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+</script>
+{% endblock %}
+
+
+
+{% block products %}
+
+<div class="payment-wrapper">
+    <div class="payment-wrapper__success" style="background-image: url({% static 'polls/images/success.png' %})"></div>
+    <h1 class="payment-wrapper__title">Платеж успешно обработан</h1>
+    <p>Информация о платеже отправлена на почту</p>
+    <a href ="{% url 'polls:home'%}" class="payment-wrapper__home-link">
+        Перейти на главную страницу
+    </a>
+</div>
+{% endblock %}
