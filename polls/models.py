@@ -13,7 +13,7 @@ class Catalog(models.Model):
 
 class Category(models.Model):
     category_name = models.CharField(max_length=60, default='')
-    category_image = models.ImageField(upload_to='polls/images/',height_field=None, width_field=None)
+    category_image = models.ImageField(upload_to='images',height_field=None, width_field=None)
     category_catalog = models.ForeignKey(Catalog, on_delete=models.CASCADE, default = None) 
    
     def __str__(self):
@@ -24,7 +24,7 @@ class Product(models.Model):
     product_descr_short = models.CharField(max_length=200, default='')
     product_descr_full = models.TextField(max_length=2000, default='')
     product_price = models.CharField(max_length=200, default='')
-    product_image = models.ImageField(upload_to='polls/images/',height_field=None, width_field=None)
+    product_image = models.ImageField(upload_to='images',height_field=None, width_field=None)
     product_categories = models.ForeignKey(Category, on_delete=models.CASCADE, default = None)
     product_best =  models.BooleanField(default=False)
     
