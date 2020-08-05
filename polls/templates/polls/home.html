@@ -17,7 +17,7 @@
         <div class="product-best" id="{{product.id}}">
             <a href="{% url 'polls:product' product.id  %}" >
                 <div class="product-best__image-wrappep">
-                    <img src="/media/{{product.product_image}}" alt="" class="product-best__image">
+                    <img src="{% static product.product_image %}" alt="" class="product-best__image">
                 </div>
                 <div class="product-best__text">
                         <h2 class="product-best__text-title">
