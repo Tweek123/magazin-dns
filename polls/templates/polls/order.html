@@ -16,7 +16,7 @@
         <div class="product-order__wrapper">
             <div class="product">
                 <div class="product__image-wrappep">
-                    <img src="/media/{{order.product.product_image}}" alt="" class="product__image">
+                    <img src="/static/media/{{order.product.product_image}}" alt="" class="product__image">
                 </div>
                 <div class="product__text">
                     <a href="{% url 'polls:product' order.product.id  %}">
@@ -77,7 +77,7 @@
     <p class="no-order__text">
         Корзина пуста
     </p>
-    <a href="/polls/" class="no-order__home-page-link">Вернуться на главную</a>
+    <a href="{% url 'polls:home'%}" class="no-order__home-page-link">Вернуться на главную</a>
 </div>
 
 {% endblock %}

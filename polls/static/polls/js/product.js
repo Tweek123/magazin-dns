@@ -36,7 +36,7 @@ window.onload = function() {
         this.parentElement.getElementsByTagName("a")[0].classList.add('show');
         this.classList.remove('show');
 
-        document.cookie = 'orders='+ordersJSON+';'+'path=/polls;';
+        document.cookie = 'orders='+ordersJSON+';'+'path=/';
       }
 
     function initEventClickBuy() {
@@ -46,9 +46,9 @@ window.onload = function() {
         buttonsAddOrder.push(document.getElementsByClassName('product-best__button-buy')); 
         buttonsAddOrder.push(document.getElementsByClassName('product__button-buy'));
         buttonsAddOrder.push(document.getElementsByClassName('product-block__button-buy'));
-    
+        console.log(buttonsAddOrder);
         for(let i = 0; i<buttonsAddOrder.length;i++) {
-    
+            
             for(let j=0; j<buttonsAddOrder[i].length; j++) {
                 let inOrder = false;
                 orders.forEach(order => {
@@ -76,6 +76,5 @@ window.onload = function() {
             }
         }
     }
-
     initEventClickBuy();
 };

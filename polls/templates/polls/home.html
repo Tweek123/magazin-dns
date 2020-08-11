@@ -34,7 +34,7 @@
             </div>
             <div class="product-best__buttons">
                 <div id="{{product.id}}" class="product-best__button-buy">Купить</div>
-                <a href="/polls/order/" class="product-best__basket-link">Корзина</a>
+                <a href="{% url 'polls:order'%}" class="product-best__basket-link">Корзина</a>
             </div>
         </div>
     {% endfor %}

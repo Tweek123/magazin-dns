@@ -120,7 +120,6 @@ def search(request):
     })  
 
 def checkoutPage(request, ):
-    print(request.POST)
     orders = []
     total = 0
 
@@ -132,8 +131,7 @@ def checkoutPage(request, ):
         
     if request.method == "POST":
         checkoutForm = CheckoutForm(data=request.POST)
-        print("ASDASD")
-        print(checkoutForm["email"].value())
+
         if checkoutForm.is_valid():
             client = Client(
                 client_email        = checkoutForm["email"].value(),
@@ -145,7 +143,6 @@ def checkoutPage(request, ):
             )
             client.client_title = checkoutForm["firstName"].value() + " " + checkoutForm["lastName"].value() + " " +checkoutForm["email"].value() + " " + str(client.client_paymentDate)
             client.save()
-            print(client.id)
             response = render(request, "polls/payment.html", 
             {'total': total,
             'catalogs': Catalog.objects.all(),

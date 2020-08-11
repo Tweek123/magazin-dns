@@ -11,7 +11,7 @@
     {% for product in products %}
         <div class="product">
             <div class="product__image-wrappep">
-                <img src="/media/{{product.product_image}}" alt="" class="product__image">
+                <img src="/static/media/{{product.product_image}}" alt="" class="product__image">
             </div>
             <div class="product__text">
                 <a href="{% url 'polls:product' product.id  %}" >
@@ -30,7 +30,7 @@
                         </b>
                         <i class="product__price-icon fa fa-rub" aria-hidden="true"></i>
                     </div>
-                    <a href="/polls/order/" class="product__basket-link" id="basket-link">Корзина</a>
+                    <a href ="{% url 'polls:order'%}" class="product__basket-link" id="basket-link">Корзина</a>
                     <div id="{{product.id}}" class="product__button-buy">Купить</div>
             </div>
         </div>

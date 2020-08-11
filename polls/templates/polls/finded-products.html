@@ -14,7 +14,7 @@
     {% for product in findendProducts %}
         <div class="product" id="{{product.id}}">
             <div class="product__image-wrappep">
-                <img src="/media/{{product.product_image}}" alt="" class="product__image">
+                <img src="/static/media/{{product.product_image}}" alt="" class="product__image">
             </div>
             <div class="product__text">
                 <a href="{% url 'polls:product' product.id  %}">

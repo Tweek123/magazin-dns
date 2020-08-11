@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url, include
 urlpatterns = [
-    path('polls/', include('polls.urls')),
+    path('', include('polls.urls')),
     path('admin/', admin.site.urls),
     url(r'^paypal/', include('paypal.standard.ipn.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
