@@ -35,7 +35,7 @@ window.onload = function() {
         this.parentElement.getElementById("basket-link").classList.add('show');
         this.classList.remove('show');
 
-        document.cookie = 'orders='+ordersJSON+';'+'path=/polls;';
+        document.cookie = 'orders='+ordersJSON+';'+'path=/;';
       }
 
     function incrOrder() {
@@ -73,7 +73,7 @@ window.onload = function() {
         
         ordersJSON = JSON.stringify(orders);
         
-        document.cookie = 'orders='+ordersJSON+';'+'path=/polls;';
+        document.cookie = 'orders='+ordersJSON+';'+'path=/;';
 
         console.log(orders);
         console.log(document.cookie);
@@ -117,7 +117,7 @@ window.onload = function() {
 
         ordersJSON = JSON.stringify(orders);
         
-        document.cookie = 'orders='+ordersJSON+';'+'path=/polls;';
+        document.cookie = 'orders='+ordersJSON+';'+'path=/;';
       }
 
       function delOrder() {
@@ -135,7 +135,7 @@ window.onload = function() {
         
         ordersJSON = JSON.stringify(orders);
         
-        document.cookie = 'orders='+ordersJSON+';'+'path=/polls;';
+        document.cookie = 'orders='+ordersJSON+';'+'path=/;';
       }
 
     function initEventClickBuy() {

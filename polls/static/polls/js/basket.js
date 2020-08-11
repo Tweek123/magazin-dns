@@ -68,7 +68,7 @@ window.onload = function() {
         
         ordersJSON = JSON.stringify(orders);
         
-        document.cookie = 'orders='+ordersJSON+';'+'path=/polls;';
+        document.cookie = 'orders='+ordersJSON+';'+'path=/;';
 
       }
 
@@ -128,7 +128,7 @@ window.onload = function() {
         
         ordersJSON = JSON.stringify(orders);
         
-        document.cookie = 'orders='+ordersJSON+';'+'path=/polls;';
+        document.cookie = 'orders='+ordersJSON+';'+'path=/;';
     
         if(!orders.length) {
             document.getElementsByClassName('order')[0].classList.add("not-show") ;
