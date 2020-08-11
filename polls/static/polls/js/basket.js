@@ -110,7 +110,7 @@ window.onload = function() {
 
         ordersJSON = JSON.stringify(orders);
         
-        document.cookie = 'orders='+ordersJSON+';'+'path=/polls;';
+        document.cookie = 'orders='+ordersJSON+';'+'path=/;';
       }
 
       function delOrder() {
