@@ -65,7 +65,6 @@ body {
 .product__text-title {
     margin-bottom: 20px;
     font-size: 18px;
-
 }
 
 .product__text-description {
@@ -264,7 +263,7 @@ body {
 }
 
 .catalog__list-item:hover .catalog__category-list{
-    display: block;
+ 
 }
 
 .catalog__category-list-item {
@@ -1099,14 +1098,6 @@ label[for="id_address"] {
         margin-top: 10px;
     }
 
-    .catalog__list-item:hover {
-        border-right: 1px solid #ddd;
-    }
-
-    .catalog__list-item:hover .catalog__category-list{
-        border: none;
-    }
-
     .product {
         padding: 50px 0px 50px 0px;
         flex-direction: column;
@@ -1261,6 +1252,14 @@ label[for="id_address"] {
     }
 
     .catalog__category-list-item {
+        pointer-events:none;
         border-left: none;
     }
-  }
+
+    .catalog__list-item-checkbox {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+    }
+}

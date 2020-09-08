@@ -19,8 +19,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-MEDIA_URL = '/static/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static','media')
+# MEDIA_URL = '/static/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'static','media')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -28,7 +32,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static','media')
 SECRET_KEY = '(1nj)l@ij7^kh2laon!bx(g!jzt=hbe_6mx2**dz-1l(bw(8)l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

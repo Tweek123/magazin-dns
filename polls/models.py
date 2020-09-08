@@ -54,7 +54,7 @@ class Delivery(models.Model):
         return self.delivery_name     
 
 class Client(models.Model):
-    client_title       = models.CharField(max_length=60)
+    client_title       = models.CharField(max_length=400)
     client_email       = models.EmailField(max_length=254)
     client_name        = models.CharField(max_length=60)
     client_lastName    = models.CharField(max_length=60)

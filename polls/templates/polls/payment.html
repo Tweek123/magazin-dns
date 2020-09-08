@@ -15,7 +15,7 @@ src="https://www.paypal.com/sdk/js?client-id=ARlEijxgWmZPoqtbsrbvd7_TjkCDv3UGZIm
 {% block products %}
 
 <div class="payment-wrapper" name="checkout" method="POST">
-    <h1 class="payment-wrapper__title">Способы оплаты:</h1>
+    <h1 class="payment__title">Способы оплаты:</h1>
     <div id="paypal-button-container"></div>
     <div class="checkout-orders__show-wrapper">
         <i class="checkout-orders__show fa fa-caret-down fa-2x" aria-hidden="true"></i>
@@ -25,9 +25,9 @@ src="https://www.paypal.com/sdk/js?client-id=ARlEijxgWmZPoqtbsrbvd7_TjkCDv3UGZIm
         {% for order in orders %}
         <div class="product-order__wrapper">
             <div class="product background-contour">
-                <div class="product__image-wrappep">
-                    <img src="/static/media/{{porder.product.product_image}}" alt="" class="product__image">
-                </div>
+                <a class="product__image-wrappep" href="{% url 'polls:product' order.product.id  %}">
+                    <img src="/media/{{order.product.product_image}}" alt="" class="product__image">
+                </a>
                 <div class="product__text">
                     <a href="{% url 'polls:product' order.product.id  %}">
                         <h2 class="product__text-title">

@@ -11,7 +11,7 @@
                 <div class="category-block__items">
                     {% for category in catalog.category_set.all %}
                         <a href ="{% url 'polls:category' category.id %}" class="category-block__item">
-                            <img src="/static/media/{{category.category_image}}" alt="" class="category-block__item-image">
+                            <img src="/media/{{category.category_image}}" alt="" class="category-block__item-image">
                             <h5 class="category-block__item-text">{{ category.category_name }}</h5>
                         </a>
                     {% endfor %}

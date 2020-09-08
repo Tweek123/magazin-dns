@@ -39,7 +39,7 @@ class CategoryView(generic.DetailView):
     def get_context_data(self, **kwargs):
         page = self.request.GET.get('page')
         context = super().get_context_data(**kwargs)
-        paginator = Paginator(context['category'].product_set.all(), 1)
+        paginator = Paginator(context['category'].product_set.all(), 2)
         products = paginator.get_page(page)
 
         context['catalogs'] = Catalog.objects.all()
@@ -110,7 +110,7 @@ def search(request):
     findedProducts = [*findedProducts,*Product.objects.filter(product_descr_full__icontains=search_value)]
     findedProducts = list(set(findedProducts))
     page = request.GET.get('page')
-    paginator = Paginator(findedProducts, 1)
+    paginator = Paginator(findedProducts, 2)
     findedProductsPagin = paginator.get_page(page)
 
     return render(request, 'polls/finded-products.html', {

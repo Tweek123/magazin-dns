@@ -24,6 +24,7 @@
             <div class="catalog__list">
             {% for catalog in catalogs %}
                     <div class="catalog__list-item">
+                            <input type="checkbox" class="catalog__list-item-checkbox">
                             <a class="catalog__list-item-link" href ="{% url 'polls:test' catalog.id %}">{{ catalog.catalog_name }}</a>
                         <div class="catalog__category-list">
                         {% for category in catalog.category_set.all %}
