@@ -1153,10 +1153,6 @@ label[for="id_address"] {
         margin: 20px auto;
     }
 
-    .catalog__list-item-checkbox  {
-
-    }
-
 }   
 
 
@@ -1461,5 +1457,9 @@ label[for="id_address"] {
         border-bottom:none;
     }
 
-
+    .no-order  {
+        width: inherit;
+        margin-right: 0px;
+        
+    }
   }
