@@ -271,6 +271,10 @@ body {
     display: flex;
 }
 
+.catalog__list-item:last-child {
+    border-bottom: none;
+}
+
 .catalog__category-list {
     display: block;
 }
